@@ -4,24 +4,24 @@
 
 iot平台端API  
 - [x] 0.签名验证  
-- [ ] 1.批量获取单点位置  
+- [x] 1.批量获取设备位置 (需要优化数据格式，位置信息获取失败) 
 - [ ] 2.获取单个设备轨迹  
 - [ ] 3.获取报警数据  
 - [x] 4.新增设备  
 - [x] 5.批量新增设备  
 - [x] 6.修改设备  
 - [x] 7.批量修改设备  
-- [ ] 7.查询设备 
-- [ ] 7.查看设备详情 
-- [ ] 7.查看设备健康数据
-- [x] 8.删除设备  
-- [x] 9.批量删除设备  
-- [ ] 10.发送消息到设备  
-- [ ] 11.群发消息到设备  
+- [ ] 8.批量获取设备 
+- [ ] 9.查看单个设备详情 
+- [ ] 10.查看设备健康数据
+- [x] 11.删除设备  
+- [x] 12.批量删除设备  
+- [ ] 13.发送消息到单个设备  
+- [ ] 14.群发消息到设备  
 
 商户API  
-- [x] 12.webhook端点设置  
-- [ ] 13.SOS报警通知 
+- [x] 15.webhook端点设置  
+- [ ] 16.SOS报警通知 
 
 
 
@@ -33,17 +33,17 @@ iot平台端API
 
 ### 0.签名验证
 
-调用API时需要携带以下参数(下方API示例中如未携带校验参数，实际使用时请加上)。
+调用API时需要携带以下URL参数(下方API示例为了方便没有携带，实际使用时请加上)。  
 iot平台回调时亦会携带下列参数，商户可自行校验合请求法性。
 
 |参数|类型|必选|描述
 |---|---|---|---|
-|secretId|string|是|商户ID，测试状态时也要携带此参数|
-|signature|string|是|签名校验，测试状态时可不携带此参数|
+|secretId|string|是|商户ID，测试模式时也要携带此参数|
+|signature|string|是|签名校验，测试模式时可不携带此参数|
 
-signature生成方法：
+**signature生成方法:**
 
-md5(secret_id + secret_key + unix时间戳去掉最后一位)
+md5(secret_id + secret_key + (unix时间戳去掉最后一位))
 
 php:
 
@@ -60,11 +60,11 @@ $signature = md5($secretId . $secretKey . floor(time() / 10));
 
 GET 
 
->/api/device/locations?page=2&secretId=1234&signature=7a698gasdgw789erq
+>/api/device/location?page=2&secretId=1234&signature=7a698gasdgw789erq
 
-### 1.批量获取单点位置
+### 1.批量获取设备位置
 
-> /api/locations 
+> /api/device/location 
 
 方法：GET
 
