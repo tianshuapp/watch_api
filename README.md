@@ -80,7 +80,7 @@ GET
 |end|int|否|不等式尾端，针对设备，limitBy <= end|
 |length|int|否|每页数据数量，针对设备，默认100|
 |page|int|否|页码，针对设备，默认1|
-|locationCount|int|否|每个设备获取多少个位置数据，默认5个|
+|locationLength|int|否|每个设备获取多少个位置数据，默认5个|
 
 **示例:**
 
