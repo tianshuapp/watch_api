@@ -6,8 +6,8 @@ iot平台端API
 - [x] [0.签名验证](#0签名验证)  
 - [x] [1.批量获取设备位置](#1批量获取设备位置)
 - [x] [2.获取单设备轨迹](#2获取单设备轨迹)  
-- [ ] [3.获取报警数据](#3获取报警数据)  
-- [ ] [4.新增单设备](#4新增单设备)  
+- [x] [3.批量获取报警数据](#3批量获取报警数据)  
+- [x] [4.新增单设备](#4新增单设备)  
 - [ ] [5.批量新增设备](#5批量新增设备)  
 - [ ] [6.更新单设备](#6更新单设备)  
 - [ ] [7.批量更新设备](#7批量更新设备)  
@@ -21,8 +21,8 @@ iot平台端API
 - [ ] [15.群发消息到设备](#15群发消息到设备)  
 
 商户API  
-- [ ] 17.webhook端点设置  
-- [ ] 18.SOS报警通知 
+- [ ] [17.webhook设置](17webhook设置)  
+- [ ] [18.SOS报警通知](18SOS报警通知) 
 
 
 
@@ -318,6 +318,7 @@ GET
 		"updatedAt": "2020-09-07 09:50:20",
 		"status": 1,
 		"locations": [
+
 			{
 				"time": "2020-09-07 05:39:11",
 				"latitude": 41.704326,
@@ -391,6 +392,7 @@ GET
 |end|int|否|不等式尾端，start < limitBy < end|
 |length|int|否|每页数据数量，默认100|
 |page|int|否|页码，默认1|
+|duration|int|否|多少时间以内的轨迹数据，默认5，单位：小时|
 
 **示例:**
 
@@ -401,17 +403,73 @@ GET
 返回：
 ```json
 {
-	"code": 1,
+	"data": {
+		"list": [{
+			"id": 13206,
+			"deviceId": "822126358522298",
+			"company": "IC",
+			"uid": 2890442907,
+			"groupId": null,
+			"flag": "AL",
+			"from": 1,
+			"data": {
+				"time": "2020-09-07 05:46:40",
+				"latitude": 0,
+				"longitude": 0,
+				"altitude": 100,
+				"angle": 0,
+				"speed": 0,
+				"stars": 0,
+				"gsm": 26,
+				"battery": 30,
+				"steps": 440,
+				"rolls": 0,
+				"status": "00000000",
+				"sites": ["1", "460", "0", "17237", "1093", "-61"],
+				"wifis": [
+					["44:f9:71:3d:bd:cc", "-88"]
+				]
+			},
+			"createdAt": "2020-09-07 09:50:44",
+			"updatedAt": "2020-09-07 09:50:44"
+		}, {
+			"id": 13205,
+			"deviceId": "822126358522298",
+			"company": "IC",
+			"uid": 2890442907,
+			"groupId": null,
+			"flag": "AL",
+			"from": 1,
+			"data": {
+				"time": "2020-09-07 05:39:40",
+				"latitude": 41.705539,
+				"longitude": 125.914325,
+				"altitude": 100,
+				"angle": 58.1,
+				"speed": 1.62,
+				"stars": 7,
+				"gsm": 55,
+				"battery": 30,
+				"steps": 338,
+				"rolls": 0,
+				"status": "00000000",
+				"sites": ["1", "460", "0", "17237", "1093", "-3"],
+				"wifis": [
+					["00:27:1d:fd:02:7c", "-95"]
+				]
+			},
+			"createdAt": "2020-09-07 09:50:43",
+			"updatedAt": "2020-09-07 09:50:43"
+		}],
+		"meta": {
+			"currentPage": 1,
+			"lastPage": 346,
+			"total": 692,
+			"length": 2
+		}
+	},
 	"message": "Success",
-	"data": [{
-		"deviceId": 123,
-		"userId": 235123,
-		"location": 123
-	}, {
-		"deviceId": 125,
-		"userId": 235156,
-		"location": 2346
-	}]
+	"code": 0
 }
 ```
 
@@ -427,6 +485,7 @@ GET
 |参数|类型|必选|描述
 |---|---|---|---|
 |deviceId|string|是|设备的IMEI或MEID，通常是设备上黏贴的条形码或二维码的值|
+|company|string|是|厂商名|
 |uid|int|否|商户自己平台中的用户ID|
 |groupId|int|否|分组ID|
 |phone|string|否|设备sim卡手机号|
@@ -451,6 +510,7 @@ Request Body:
 {
   "uid": "12345",
   "deviceId": "8767865",
+  "company": "IC",
   "phone": "13100000000",
   "center": "13000000000",
   "sos1": "13000000001",
@@ -941,8 +1001,6 @@ Response Body:
 |---|---|---|---|
 |deviceId|string|是|设备的IMEI或MEID，通常是设备上黏贴的条形码或二维码的值|
 |flag|string|是|消息类型，详情请看：|
-|uid|int|否|商户自己平台中的用户ID|
-|groupId|int|否|分组ID|
 |data|string|否|消息内容，内容字节数组转换的base64字符串|
 
 
@@ -962,8 +1020,6 @@ Request Body:
 ```json
 {
     "deviceId":"860315001121053",
-    "uid":123,
-    "groupId":123,
     "data":null,
     "flag":"FIND"
 }
@@ -980,6 +1036,55 @@ Response Body:
 
 
 ### 15.群发消息到设备
+
+> /api/device/events
+
+方法：POST
+
+请求参数：
+
+|参数|类型|必选|描述
+|---|---|---|---|
+|deviceIds|string[]|是|ID列表，设备的IMEI或MEID，通常是设备上黏贴的条形码或二维码的值|
+|flag|string|是|消息类型，详情请看：|
+|data|string|否|消息内容，内容字节数组转换的base64字符串|
+
+
+返回参数：
+
+|参数|类型|描述
+|---|---|---|
+|data|int|添加成功消息ID|
+
+**示例:**
+
+POST 
+
+>/api/device/events
+
+Request Body:
+```json
+{
+    "deviceIds": [
+      "860315001121053",
+      "860315001121054"
+    ],
+    "data":null,
+    "flag":"FIND"
+}
+```
+
+Response Body:
+```json
+{
+    "data": [
+      765371,
+      765372,
+    ],
+    "message": "Success",
+    "code": 0
+}
+```
 
 ### 16.webhook端点设置
 
