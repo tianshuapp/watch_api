@@ -9,10 +9,10 @@ iot平台端API
 - [x] [3.批量获取报警数据](#3批量获取报警数据)  
 - [x] [4.新增单设备](#4新增单设备)  
 - [x] [5.批量新增设备](#5批量新增设备)  
-- [ ] [6.更新单设备](#6更新单设备)  
-- [ ] [7.批量更新设备](#7批量更新设备)  
-- [ ] [8.批量获取设备](#8批量获取设备) 
-- [ ] [9.查看单设备](#9查看单设备) 
+- [x] [6.更新单设备](#6更新单设备)  
+- [x] [7.批量更新设备](#7批量更新设备)  
+- [x] [8.批量获取设备](#8批量获取设备) 
+- [x] [9.查看单设备](#9查看单设备) 
 - [ ] [10.查看单设备健康数据](#10查看单设备健康数据)
 - [ ] [11.批量查看设备健康数据](#11批量查看设备健康数据)
 - [ ] [12.删除设备](#12删除设备)  
@@ -489,7 +489,7 @@ GET
 |uid|int|否|商户自己平台中的用户ID|
 |groupId|int|否|分组ID|
 |phone|string|否|设备sim卡手机号|
-|center|string|否|设备可拨打的服务中心号码|
+|center|string|否|服务中心号码|
 |sos1|string|否|求救电话1|
 |sos2|string|否|求救电话2|
 
@@ -542,7 +542,7 @@ Response Body:
 |uid|int|否|商户自己平台中的用户ID|
 |groupId|int|否|分组ID|
 |phone|string|否|设备sim卡手机号|
-|center|string|否|设备可拨打的服务中心号码|
+|center|string|否|服务中心号码|
 |sos1|string|否|求救电话1|
 |sos2|string|否|求救电话2|
 
@@ -551,7 +551,7 @@ Response Body:
 |参数|类型|描述
 |---|---|---|
 |success|string[]|添加成功的设备ID列表|
-|failed|object|添加失败的设备ID列表与对应的原因|
+|failed|object|添加失败的设备ID与对应的原因|
 
 **示例:**
 
@@ -624,7 +624,7 @@ Response Body:
 
 **示例:**
 
-POST 
+PUT 
 
 >/api/device/device/1234
 
@@ -642,7 +642,19 @@ Request Body:
 Response Body:
 ```json
 {
-    "data": "1234",
+    "data": {
+        "deviceId": "1238767867",
+        "uid": "12345",
+        "groupId": "111",
+        "company": "IC",
+        "phone": "13101000012",
+        "center": "13000000000",
+        "sos1": "13000000001",
+        "sos2": "13000000002",
+        "status": 1,
+        "createdAt": "2020-09-07 14:52:03",
+        "updatedAt": "2020-09-07 15:17:14"
+    },
     "message": "Success",
     "code": 0
 }
@@ -658,7 +670,6 @@ Response Body:
 
 |参数|类型|必选|描述
 |---|---|---|---|
-|deviceId|string|是|设备的IMEI或MEID，通常是设备上黏贴的条形码或二维码的值|
 |uid|int|否|商户自己平台中的用户ID|
 |groupId|int|否|分组ID|
 |phone|string|否|设备sim卡手机号|
@@ -739,31 +750,44 @@ GET
 返回：
 ```json
 {
-	"code": 0,
-	"message": "Success",
-	"data": {
-		"meta": {
-			"currentPage": 1,
-			"total": 123,
-			"length": 10,
-			"lastPge": 4
-		},
-		"list": [{
-			"deviceId": "89a7dsfg987as6d9a8",
-			"uid": 235123,
-			"phone": 235123,
-			"center": 235123,
-			"sos1": 235123,
-			"sos2": 235123
-		}, {
-			"deviceId": "89a7dsfg987as6d9a8",
-			"uid": 235123,
-			"phone": 235123,
-			"center": 235123,
-			"sos1": 235123,
-			"sos2": 235123
-		}]
-	}
+    "data": {
+        "list": [
+            {
+                "deviceId": "3428767868",
+                "uid": 12346,
+                "groupId": null,
+                "company": "IC",
+                "phone": "13800000000",
+                "center": "13000000000",
+                "sos1": "13000000001",
+                "sos2": "13000000002",
+                "status": 1,
+                "createdAt": "2020-09-07 14:52:05",
+                "updatedAt": "2020-09-07 15:34:21"
+            },
+            {
+                "deviceId": "1238767867",
+                "uid": 12345,
+                "groupId": null,
+                "company": "IC",
+                "phone": "18100000000",
+                "center": "13000000000",
+                "sos1": "13000000001",
+                "sos2": "13000000002",
+                "status": 1,
+                "createdAt": "2020-09-07 14:52:03",
+                "updatedAt": "2020-09-07 15:34:22"
+            }
+        ],
+        "meta": {
+            "currentPage": 1,
+            "lastPage": 33,
+            "total": 66,
+            "length": 10
+        }
+    },
+    "message": "Success",
+    "code": 0
 }
 ```
 
@@ -778,21 +802,26 @@ GET
 
 GET 
 
->/api/device/device/89a7dsfg987as6d9a8?page=2&orderBy=updated_at&order=asc
+>/api/device/device/89a7dsfg987as6d9a8
 
 返回：
 ```json
 {
-	"code": 0,
-	"message": "Success",
-	"data": {
-        "deviceId": "89a7dsfg987as6d9a8",
-        "uid": 235123,
-        "phone": 235123,
-        "center": 235123,
-        "sos1": 235123,
-        "sos2": 235123
-    }
+    "data": {
+        "deviceId": "1238767867",
+        "uid": 12345,
+        "groupId": null,
+        "company": "IC",
+        "phone": "18100000000",
+        "center": "13000000000",
+        "sos1": "13000000001",
+        "sos2": "13000000002",
+        "status": 1,
+        "createdAt": "2020-09-07 14:52:03",
+        "updatedAt": "2020-09-07 15:34:22"
+    },
+    "message": "Success",
+    "code": 0
 }
 ```
 
