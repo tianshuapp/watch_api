@@ -725,7 +725,7 @@ Response Body:
 }
 ```
 
-### 8.查看设备列表
+### 8.批量获取设备
 
 > /api/device/device
 
@@ -792,7 +792,7 @@ GET
 ```
 
 
-### 9.查看设备详情
+### 9.查看单设备
 
 > /api/device/device/{deviceId}
 
@@ -1112,7 +1112,7 @@ Response Body:
 {
     "data": [
       765371,
-      765372,
+      765372
     ],
     "message": "Success",
     "code": 0
