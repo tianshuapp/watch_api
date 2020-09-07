@@ -1,7 +1,6 @@
 # Watch API
 
 ## 目录
-
 iot平台端API  
 - [x] [0.签名验证](#0签名验证)  
 - [x] [1.批量获取设备位置](#1批量获取设备位置)
@@ -13,16 +12,19 @@ iot平台端API
 - [x] [7.批量更新设备](#7批量更新设备)  
 - [x] [8.批量获取设备](#8批量获取设备) 
 - [x] [9.查看单设备](#9查看单设备) 
-- [ ] [10.查看单设备健康数据](#10查看单设备健康数据)
-- [ ] [11.批量查看设备健康数据](#11批量查看设备健康数据)
-- [ ] [12.删除设备](#12删除设备)  
-- [ ] [13.批量删除设备](#13批量删除设备)  
-- [ ] [14.发送消息到单设备](#14发送消息到单设备) 
-- [ ] [15.群发消息到设备](#15群发消息到设备)  
+- [x] [10.查看设备健康数据](#10查看设备健康数据)
+- [x] [11.查看设备运动数据](#11查看设备运动数据)
+- [x] [12.删除设备](#12删除设备)  
+- [x] [13.批量删除设备](#13批量删除设备)  
+- [x] [14.发送消息到单设备](#14发送消息到单设备) 
+- [x] [15.群发消息到设备](#15群发消息到设备)  
 
 商户API  
 - [ ] [17.webhook设置](17webhook设置)  
-- [ ] [18.SOS报警通知](18SOS报警通知) 
+- [ ] [18.消息通知](18消息通知) 
+
+其他  
+- [ ] [19.消息类型](19消息类型) 
 
 
 
@@ -827,7 +829,7 @@ GET
 
 
 
-### 10.查看单设备健康数据
+### 10.查看设备健康数据
 
 > /api/device/health/{deviceId} 
 
@@ -835,7 +837,8 @@ GET
 
 |参数|类型|必选|描述
 |---|---|---|---|
-|duration|int|否|多少时间以内的健康数据，默认2，单位：小时|
+|page|int|否|页码，针对设备，默认1|
+|duration|int|否|多少时间以内的健康数据，默认5，单位：小时|
 
 **示例:**
 
@@ -846,48 +849,44 @@ GET
 返回：
 ```json
 {
-	"code": 0,
-	"message": "Success",
-	"data": [{
-      "device": {
-		"deviceId": 123,
-		"userId": 235123,
-		"location": 123
-      },
-      "healths": [
-        {
-          "blood": 90,
-          "createdAt": "2006-01-02 15:04:05"
-        },
-        {
-          "heart": 90,
-          "createdAt": "2006-01-02 15:04:05"
-        },
-        {
-          "blood": 90,
-          "createdAt": "2006-01-02 15:01:05"
-        },
-        {
-          "oxygen": 90,
-          "createdAt": "2006-01-02 15:04:05"
+    "data": {
+        "list": [
+            {
+                "blood": [
+                    111,
+                    75
+                ],
+                "createdAt": "2020-09-07 09:48:38"
+            },
+            {
+                "heart": 116,
+                "createdAt": "2020-09-07 09:48:38"
+            }
+        ],
+        "meta": {
+            "currentPage": 1,
+            "lastPage": 26,
+            "total": 51,
+            "length": 2
         }
-      ]
-	}]
+    },
+    "message": "Success",
+    "code": 0
 }
 ```
 
 
 
-### 11.批量查看设备健康数据
+### 11.查看设备运动数据
 
-> /api/device/healths 
+> /api/device/sport/{deviceId}
 
 方法：POST
 
 |参数|类型|必选|描述
 |---|---|---|---|
-|duration|int|否|多少时间以内的健康数据，默认2，单位：小时|
-|deviceIds|string[]|是|设备ID数组|
+|page|int|否|页码，针对设备，默认1|
+|duration|int|否|多少时间以内的健康数据，默认5，单位：小时|
 
 
 **示例:**
@@ -899,55 +898,30 @@ GET
 返回：
 ```json
 {
-	"code": 0,
-	"message": "Success",
-	"data": [{
-      "device": {
-		"deviceId": 123,
-		"userId": 235123
-      },
-      "healths": [
-        {
-          "blood": 90,
-          "createdAt": "2006-01-02 15:04:05"
-        },
-        {
-          "heart": 90,
-          "createdAt": "2006-01-02 15:04:05"
-        },
-        {
-          "blood": 90,
-          "createdAt": "2006-01-02 15:01:05"
-        },
-        {
-          "oxygen": 90,
-          "createdAt": "2006-01-02 15:04:05"
+    "data": {
+        "list": [
+            {
+                "date": "2020-09-07",
+                "steps": 38,
+                "rolls": 123,
+                "battery": 47
+            },
+            {
+                "date": "2020-09-07",
+                "steps": 38,
+                "rolls": 123,
+                "battery": 47
+            }
+        ],
+        "meta": {
+            "currentPage": 2,
+            "lastPage": 6,
+            "total": 12,
+            "length": 2
         }
-      ]
-	},{
-      "device": {
-        "deviceId": 124,
-        "userId": 235124
-      },
-      "healths": [
-          {
-            "blood": 90,
-            "createdAt": "2006-01-02 15:04:05"
-          },
-          {
-            "heart": 90,
-            "createdAt": "2006-01-02 15:04:05"
-          },
-          {
-            "blood": 90,
-            "createdAt": "2006-01-02 15:01:05"
-          },
-          {
-            "oxygen": 90,
-            "createdAt": "2006-01-02 15:04:05"
-          }
-      ]
-    }]
+    },
+    "message": "Success",
+    "code": 0
 }
 ```
 
@@ -979,7 +953,7 @@ Response Body:
 
 > /api/device/devices/delete
 
-方法：DELETE
+方法：PUT
 
 返回参数：
 
@@ -995,14 +969,9 @@ PUT
 
 Request Body:
 ```json
-[
-  {
-    "deviceId": "8767867" 
-  },
-  {
-    "deviceId": "8767868" 
-  }
-]
+{
+    "deviceIds":  ["8767867", "8767868"]
+}
 ```
 
 Response Body:
@@ -1034,14 +1003,8 @@ Response Body:
 |---|---|---|---|
 |deviceId|string|是|设备的IMEI或MEID，通常是设备上黏贴的条形码或二维码的值|
 |flag|string|是|消息类型，详情请看：|
-|data|string|否|消息内容，内容字节数组转换的base64字符串|
-
-
-返回参数：
-
-|参数|类型|描述
-|---|---|---|
-|data|int|添加成功消息ID|
+|data|string|否|消息内容，可能是base64字符串，通过下方字段判断|
+|base64|bool|否|data字段是否是base64字符串，false：不是 true：是，默认：false|
 
 **示例:**
 
@@ -1080,7 +1043,9 @@ Response Body:
 |---|---|---|---|
 |deviceIds|string[]|是|ID列表，设备的IMEI或MEID，通常是设备上黏贴的条形码或二维码的值|
 |flag|string|是|消息类型，详情请看：|
-|data|string|否|消息内容，内容字节数组转换的base64字符串|
+|groupId|int|否|分组|
+|data|string|否|消息内容，可能是base64字符串，通过下方字段判断|
+|base64|bool|否|data字段是否是base64字符串，false：不是 true：是，默认：false|
 
 
 返回参数：
@@ -1102,18 +1067,23 @@ Request Body:
       "860315001121053",
       "860315001121054"
     ],
-    "data":null,
-    "flag":"FIND"
+    "all": false,
+    "data": null,
+    "flag": "FIND"
 }
 ```
 
 Response Body:
 ```json
 {
-    "data": [
-      765371,
-      765372
-    ],
+    "data": {
+        "success": [
+            "860315001121054"
+        ],
+        "failed": [
+            "860315001121055": "设备不存在"
+        ]
+    },
     "message": "Success",
     "code": 0
 }
@@ -1136,38 +1106,28 @@ Get
 >pong
 
 
-### 17.SOS报警通知
+### 17.消息通知
 
-iot接收到设备SOS消息时，同步通知商户
+iot平台接收到设备消息时，同步通知商户
 
 POST 
 
->**endpoint**/alert
+>**endpoint**/notify
 
 示例：
 
 iot平台端：
 
 POST
->**endpoint**/alert
+>**endpoint**/notify
 
 Request Body:
 ```json
 {
-  "uid": "12345",
   "deviceId": "8767865",
-  "location": {
-    "longitude": 123.4123,
-    "latitude": 65.1234,
-    "altitude": 351.1,
-    "angle": 195.1,
-    "speed": 0.0
-  },
-  "health": {
-    "heart": 100,
-    "blood": "100/140",
-    "oxygen": 100
-  }
+  "uid": "12345",
+  "flag": "AL",
+  "data": "xxx"
 }
 ```
 
