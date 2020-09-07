@@ -20,7 +20,7 @@ iot平台端API
 - [x] [15.群发消息到设备](#15群发消息到设备)  
 
 商户API  
-- [ ] [16.webhook设置](16webhook设置)  
+- [x] [16.webhook设置](16webhook设置)  
 - [ ] [17.消息通知](17消息通知) 
 
 其他  
@@ -1080,9 +1080,9 @@ Response Body:
         "success": [
             "860315001121054"
         ],
-        "failed": [
+        "failed": {
             "860315001121055": "设备不存在"
-        ]
+        }
     },
     "message": "Success",
     "code": 0
@@ -1138,3 +1138,41 @@ Response Body:
 
 
 ### 18.消息类型
+
+**设备发出:**  
+- LK 心跳包  
+- PING 绑定检查  
+- KA 运动数据上报  
+- UD 位置数据上报  
+- UD2 盲点补传  
+- AL 报警上报  
+- Time 获取时间  
+- WT 获取天气
+- img 上传拍照  
+- VOICE 上传音频  
+- WG 请求位置    
+- temp 上传体温  
+- blood 上传血压  
+- oxygen  血氧  
+  
+**平台发出：**  
+
+- UPLOAD 设置上传间隔  
+- CENTER 中心号码设置  
+- CALL 拨打电话  
+- MONTIOR 监听  
+- SOS 设置两个SOS号码  
+- FACTORY 回复出厂设置  
+- SOSSMS sos短信开关，是否向sos号码发送短信  
+- LOWBAT 低电压报警开关 向中心号码发短信  
+- VERNO 版本查询  
+- CR 定位指令  
+- POWEROFF 关机指令  
+- REMOVE 取下手环报警开关  
+- PEDO 计步功能开关  
+- SILENCETIME 免打扰时间设置  
+- SILENCETIME2  
+- SLEEPTIME 翻身检测时间段设置  
+- FIND 找手表指令  
+- REMIND 闹钟设置  
+- TK 微聊发送语音  
