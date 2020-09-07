@@ -3,25 +3,26 @@
 ## 目录
 
 iot平台端API  
-- [x] 0.签名验证  
+- [x] [0.签名验证](#签名验证)  
 - [x] 1.批量获取设备位置 (需要优化数据格式，需要完善筛选条件) 
 - [ ] 2.获取单个设备轨迹  
 - [x] 3.获取报警数据  (需要优化数据格式，需要完善筛选条件)
-- [x] 4.新增设备  
+- [x] 4.新增单个设备  
 - [x] 5.批量新增设备  
-- [x] 6.修改设备  
-- [x] 7.批量修改设备  
+- [x] 6.更新单个设备  
+- [x] 7.批量更新设备  
 - [x] 8.批量获取设备 
-- [x] 9.查看单个设备详情 
-- [x] 10.查看设备健康数据
-- [x] 11.删除设备  
-- [x] 12.批量删除设备  
-- [ ] 13.发送消息到单个设备  
-- [ ] 14.群发消息到设备  
+- [x] 9.查看单个设备 
+- [x] 10.查看单个设备健康数据
+- [ ] 11.批量查看设备健康数据
+- [x] 12.删除设备  
+- [x] 13.批量删除设备  
+- [x] 14.发送消息到单个设备  
+- [ ] 15.群发消息到设备  
 
 商户API  
-- [x] 15.webhook端点设置  
-- [ ] 16.SOS报警通知 
+- [x] 17.webhook端点设置  
+- [ ] 18.SOS报警通知 
 
 
 
@@ -34,7 +35,7 @@ iot平台端API
 ### 0.签名验证
 
 调用API时需要携带以下URL参数(下方API示例为了方便没有携带，实际使用时请加上)。  
-iot平台回调时亦会携带下列参数，商户可自行校验合请求法性。
+iot平台回调时亦会携带下列参数，商户可自行校验请求合法性。
 
 |参数|类型|必选|描述
 |---|---|---|---|
@@ -175,7 +176,7 @@ GET
 ```
 
 
-### 4.新增设备
+### 4.新增单个设备
 
 > /api/device/device
 
@@ -292,7 +293,7 @@ Response Body:
 }
 ```
 
-### 6.修改设备
+### 6.修改单个设备
 
 以设备ID为基准，操作对象为设备
 
@@ -409,8 +410,87 @@ Response Body:
 }
 ```
 
+### 8.查看设备列表
 
-### 8.删除设备
+> /api/device/device
+
+方法：GET
+
+|参数|类型|必选|描述
+|---|---|---|---|
+|orderBy|string|否|排序字段，默认为ID|
+|order|string|否|排序方式，desc或asc,默认desc|
+|limitBy|string|否|限制字段|
+|start|int|否|不等式首端，start < limitBy < end|
+|end|int|否|不等式尾端，start < limitBy < end|
+|length|int|否|每页数据数量，默认100|
+|page|int|否|页码，默认1|
+
+**示例:**
+
+GET 
+
+>/api/device/device?page=2&orderBy=updated_at&order=asc
+
+返回：
+```json
+{
+	"code": 0,
+	"message": "Success",
+	"data": [{
+		"deviceId": "89a7dsfg987as6d9a8",
+		"uid": 235123,
+		"phone": 235123,
+		"center": 235123,
+		"sos1": 235123,
+		"sos2": 235123
+	}, {
+		"deviceId": "89a7dsfg987as6d9a8",
+		"uid": 235123,
+		"phone": 235123,
+		"center": 235123,
+		"sos1": 235123,
+		"sos2": 235123
+	}]
+}
+```
+
+
+### 9.查看设备详情
+
+> /api/device/device/{deviceId}
+
+方法：GET
+
+**示例:**
+
+GET 
+
+>/api/device/device/89a7dsfg987as6d9a8?page=2&orderBy=updated_at&order=asc
+
+返回：
+```json
+{
+	"code": 0,
+	"message": "Success",
+	"data": {
+        "deviceId": "89a7dsfg987as6d9a8",
+        "uid": 235123,
+        "phone": 235123,
+        "center": 235123,
+        "sos1": 235123,
+        "sos2": 235123
+    }
+}
+```
+
+
+
+### 10.查看健康数据
+
+### 11.批量查看设备健康数据
+
+### 12.删除单个设备
 
 
 > /api/device/device/{deviceId}
@@ -433,7 +513,7 @@ Response Body:
 ```
 
 
-### 9.批量删除设备
+### 13.批量删除设备
 
 > /api/device/devices/delete
 
@@ -480,9 +560,59 @@ Response Body:
 ```
 
 
+### 14.发送消息到单个设备
+
+> /api/device/event
+
+方法：POST
+
+请求参数：
+
+|参数|类型|必选|描述
+|---|---|---|---|
+|deviceId|string|是|设备的IMEI或MEID，通常是设备上黏贴的条形码或二维码的值|
+|flag|string|是|消息类型，详情请看：|
+|uid|int|否|商户自己平台中的用户ID|
+|groupId|int|否|分组ID|
+|data|string|否|消息内容，内容字节数组转换的base64字符串|
 
 
-### 12.webhook端点设置
+返回参数：
+
+|参数|类型|描述
+|---|---|---|
+|data|int|添加成功消息ID|
+
+**示例:**
+
+POST 
+
+>/api/device/event
+
+Request Body:
+```json
+{
+    "deviceId":"860315001121053",
+    "uid":123,
+    "groupId":123,
+    "data":null,
+    "flag":"FIND"
+}
+```
+
+Response Body:
+```json
+{
+    "data": 765371,
+    "message": "Success",
+    "code": 0
+}
+```
+
+
+### 15.群发消息到设备
+
+### 16.webhook端点设置
 
 iot平台通过商户的webhook端点向商户服务端推送消息，端点可在商户后台修改。
 
@@ -499,7 +629,7 @@ Get
 >pong
 
 
-### 13.SOS报警通知
+### 17.SOS报警通知
 
 iot接收到设备SOS消息时，同步通知商户
 
