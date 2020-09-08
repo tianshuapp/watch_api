@@ -1235,7 +1235,7 @@ Response Body:
 
 |字段|类型|可空|描述
 |---|---|---|---|
-|time|string|否|创建时间|
+|time|datetime|否|创建时间(世界时)，格式：2006-01-02 15:04:05|
 |latitude|float|是|纬度|
 |longitude|float|是|经度|
 |angle|float|是|朝向角度|
