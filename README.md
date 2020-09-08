@@ -24,7 +24,8 @@ iot平台端API
 [17.消息通知](#17消息通知) 
 
 附表  
-[18.消息类型](#18消息类型) 
+[18.消息类型](#18消息类型)   
+[19.一般结构](#19一般结构)   
 
 
 
@@ -71,9 +72,9 @@ GET
 
 获取的是每个设备最新的位置
 
-> /api/device/location 
-
 方法：GET
+
+> /api/device/location 
 
 |参数|类型|必选|描述
 |---|---|---|---|
@@ -87,8 +88,6 @@ GET
 |locationLength|int|否|每个设备获取多少个位置数据，默认5个|
 
 **示例:**
-
-GET 
 
 >/api/device/locations?page=2&orderBy=updated_at&order=asc
 
@@ -270,37 +269,20 @@ GET
 }
 ```
 
-位置数据结构
-
-|参数|类型|可空|描述
-|---|---|---|---|
-|time|string|否|创建时间|
-|latitude|float|是|纬度|
-|longitude|float|是|经度|
-|angle|float|是|朝向角度|
-|speed|float|是|速度，m/s|
-|stars|int|是|卫星数量|
-|gsm|int|是|gsm信号强度|
-|battery|int|否|电池电量 0-100|
-|steps|int|是|今日步数|
-|rolls|int|是|翻滚次数|
-|status|string|否|状态|
-|sites|array|是|基站数据|
-|wifis|array|是|附近wifi指纹数据，可用第三方lbs服务定位|
+[设备数据详解](#设备数据)
+[位置数据详解](#位置数据)
 
 ### 2.获取单设备轨迹
 
-> /api/location/{deviceid} 
-
 方法：GET
+
+> /api/location/{deviceid} 
 
 |参数|类型|必选|描述
 |---|---|---|---|
 |duration|int|否|多少时间以内的轨迹数据，默认5，单位：小时|
 
 **示例:**
-
-GET 
 
 >/api/device/location/123?duration=2
 
@@ -320,7 +302,6 @@ GET
 		"updatedAt": "2020-09-07 09:50:20",
 		"status": 1,
 		"locations": [
-
 			{
 				"time": "2020-09-07 05:39:11",
 				"latitude": 41.704326,
@@ -379,11 +360,15 @@ GET
 }
 ```
 
+
+[设备数据详解](#设备数据)
+[位置数据详解](#位置数据)
+
 ### 3.批量获取报警数据
 
-> /api/device/alert
-
 方法：GET
+
+> /api/device/alert
 
 |参数|类型|必选|描述
 |---|---|---|---|
@@ -407,7 +392,6 @@ GET
 {
 	"data": {
 		"list": [{
-			"id": 13206,
 			"deviceId": "822126358522298",
 			"company": "IC",
 			"uid": 2890442907,
@@ -435,7 +419,6 @@ GET
 			"createdAt": "2020-09-07 09:50:44",
 			"updatedAt": "2020-09-07 09:50:44"
 		}, {
-			"id": 13205,
 			"deviceId": "822126358522298",
 			"company": "IC",
 			"uid": 2890442907,
@@ -478,9 +461,9 @@ GET
 
 ### 4.新增单设备
 
-> /api/device/device
-
 方法：POST
+
+> /api/device/device
 
 请求参数：
 
@@ -495,15 +478,7 @@ GET
 |sos1|string|否|求救电话1|
 |sos2|string|否|求救电话2|
 
-返回参数：
-
-|参数|类型|描述
-|---|---|---|
-|data|string|添加成功的设备ID|
-
 **示例:**
-
-POST 
 
 >/api/device/device
 
@@ -528,6 +503,8 @@ Response Body:
     "code": 0
 }
 ```
+
+返回的是设备ID
 
 ### 5.批量新增设备
 
@@ -603,9 +580,9 @@ Response Body:
 
 以设备ID为基准，操作对象为设备
 
-> /api/device/device/{deviceId}
-
 方法：PUT
+
+> /api/device/device/{deviceId}
 
 请求参数：
 
@@ -618,15 +595,11 @@ Response Body:
 |sos1|string|否|求救电话1|
 |sos2|string|否|求救电话2|
 
-返回参数：
+返回参数  
+[设备数据详解](#设备数据)
 
-|参数|类型|描述
-|---|---|---|
-|data|string|修改成功的设备ID|
 
-**示例:**
-
-PUT 
+**示例:** 
 
 >/api/device/device/1234
 
@@ -664,9 +637,9 @@ Response Body:
 
 ### 7.批量更新设备
 
-> /api/device/devices
-
 方法：PUT
+
+> /api/device/devices
 
 请求参数：
 
@@ -686,8 +659,6 @@ Response Body:
 |data|string|添加成功的设备ID|
 
 **示例:**
-
-PUT
 
 >/api/device/devices
 
@@ -726,6 +697,7 @@ Response Body:
     "code": 0
 }
 ```
+
 
 ### 8.批量获取设备
 
@@ -793,6 +765,7 @@ GET
 }
 ```
 
+[设备数据详解](#设备数据)
 
 ### 9.查看单设备
 
@@ -827,6 +800,7 @@ GET
 }
 ```
 
+[设备数据详解](#设备数据)
 
 
 ### 10.查看设备健康数据
@@ -875,6 +849,7 @@ GET
 }
 ```
 
+[健康数据详解](#健康数据)
 
 
 ### 11.查看设备运动数据
@@ -925,17 +900,20 @@ GET
 }
 ```
 
+[运动数据详解](#运动数据)
+
 
 ### 12.删除单设备
 
+方法：DELETE
 
 > /api/device/device/{deviceId}
 
-方法：DELETE
+|参数|类型|必选|描述|
+|---|---|---|---|
+|deviceId|string|是|设备ID|
 
 **示例:**
-
-DELETE 
 
 >/api/device/device/1234
 
@@ -951,15 +929,22 @@ Response Body:
 
 ### 13.批量删除设备
 
+方法：PUT
+
 > /api/device/devices/delete
 
-方法：PUT
+参数  
+|参数|类型|必选|描述|
+|---|---|---|---|
+|deviceIds|string[]|是|设备ID的列表|
+
 
 返回参数：
 
 |参数|类型|描述
 |---|---|---|
-|data|Array|删除成功的设备ID列表|
+|success|string[]|删除成功的设备ID列表|
+|failed|object|删除失败的设备ID与相应的原因|
 
 **示例:**
 
@@ -993,18 +978,18 @@ Response Body:
 
 ### 14.发送消息到单设备
 
-> /api/device/event
-
 方法：POST
+
+> /api/device/event
 
 请求参数：
 
 |参数|类型|必选|描述
 |---|---|---|---|
 |deviceId|string|是|设备的IMEI或MEID，通常是设备上黏贴的条形码或二维码的值|
-|flag|string|是|消息类型，详情请看：|
+|flag|string|是|消息类型，详情请看：[消息类型](#18消息类型)|
 |data|string|否|消息内容，可能是base64字符串，通过下方字段判断|
-|base64|bool|否|data字段是否是base64字符串，false：不是 true：是，默认：false|
+|encoded|bool|否|data字段是否是base64字符串，false：不是 true：是，默认：false|
 
 **示例:**
 
@@ -1016,8 +1001,9 @@ Request Body:
 ```json
 {
     "deviceId":"860315001121053",
+    "flag":"FIND",
     "data":null,
-    "flag":"FIND"
+    "encoded": false
 }
 ```
 
@@ -1045,14 +1031,15 @@ Response Body:
 |flag|string|是|消息类型，详情请看：|
 |groupId|int|否|分组|
 |data|string|否|消息内容，可能是base64字符串，通过下方字段判断|
-|base64|bool|否|data字段是否是base64字符串，false：不是 true：是，默认：false|
+|encoded|bool|否|data字段是否是base64字符串，false：不是 true：是，默认：false|
 
 
 返回参数：
 
 |参数|类型|描述
 |---|---|---|
-|data|int|添加成功消息ID|
+|success|string[]|删除成功的设备ID列表|
+|failed|object|删除失败的设备ID与相应的原因|
 
 **示例:**
 
@@ -1069,7 +1056,8 @@ Request Body:
     ],
     "all": false,
     "data": null,
-    "flag": "FIND"
+    "flag": "FIND",
+    "encoded": false
 }
 ```
 
@@ -1091,26 +1079,16 @@ Response Body:
 
 ### 16.webhook设置
 
-iot平台通过商户的webhook端点向商户服务端推送消息，端点可在商户后台修改。
+iot平台通过商户的webhook端点向商户服务端推送消息，端点可通知管理员修改。
 
-端点格式示例：
-
-> https://abc.def/api/watch/notify
-
-商户需要实现此API：
-
-Get
-> https://abc.def/api/watch/ping
-
-返回字符串
->pong
+推送消息采用POST方法，内容格式：application/json
 
 
 ### 17.消息通知
 
 iot平台接收到设备消息时，同步通知商户
 
-POST 
+方法 POST 
 
 >**endpoint**/notify
 
@@ -1164,11 +1142,16 @@ Request Body:
 }
 ```
 
+[设备数据详解](#设备数据`)
+[位置数据详解](#位置数据`)
+[消息类型详解](#18消息类型`)
+
 商户端：
 
 Response Body:
 >Success
 
+商户端回复字符串 *Success* 代表接收成功。
 
 ### 18.消息类型
 
@@ -1214,3 +1197,128 @@ Response Body:
 |FIND|响铃|
 |REMIND|闹钟设置|
 |TK|语音消息|
+
+
+### 19.一般结构
+
+#### 设备数据
+
+|字段|类型|描述
+|---|---|---|
+
+|参数|类型|描述
+|---|---|---|
+|deviceId|string|设备的IMEI或MEID，通常是设备上黏贴的条形码或二维码的值|
+|company|string|厂商名|
+|uid|int|商户自己平台中的用户ID|
+|groupId|int|分组ID|
+|phone|string|设备sim卡手机号|
+|center|string|服务中心号码|
+|sos1|string|求救电话1|
+|sos2|string|求救电话2|
+
+
+```json
+{
+    "deviceId": "860315001121004",
+    "uid": 12346,
+    "groupId": null,
+    "company": "IC",
+    "phone": "13630753377",
+    "center": "10086",
+    "sos1": "10086",
+    "sos2": "18642041559",
+    "createdAt": "2020-09-05 17:25:55",
+    "updatedAt": "2020-09-05 17:31:12"
+}
+
+```
+
+#### 位置数据
+
+|字段|类型|可空|描述
+|---|---|---|---|
+|time|string|否|创建时间|
+|latitude|float|是|纬度|
+|longitude|float|是|经度|
+|angle|float|是|朝向角度|
+|speed|float|是|速度，m/s|
+|stars|int|是|卫星数量|
+|gsm|int|是|gsm信号强度|
+|battery|int|否|电池电量 0-100|
+|steps|int|是|今日步数|
+|rolls|int|是|翻滚次数|
+|status|string|否|状态|
+|sites|array|是|基站数据|
+|wifis|array|是|附近wifi指纹数据，可用第三方lbs服务定位|
+
+```json
+{
+    "time": "2020-09-07 05:46:40",
+    "latitude": 0,
+    "longitude": 0,
+    "altitude": 100,
+    "angle": 0,
+    "speed": 0,
+    "stars": 0,
+    "gsm": 26,
+    "battery": 30,
+    "steps": 440,
+    "rolls": 0,
+    "status": "00000000",
+    "sites": [
+        "1",
+        "460",
+        "0",
+        "17237",
+        "1093",
+        "-61"
+    ],
+    "wifis": [
+        [
+            "44:f9:71:3d:bd:cc",
+            "-88"
+        ]
+    ]
+}
+```
+
+#### 健康数据
+
+**blood** 血压
+
+```json
+[
+  120,
+  75
+]
+```
+
+第一个元素是收缩压，第二个元素是舒张压
+
+**heart** 每分钟心率
+
+心率是一个整型数字
+
+
+**oxygen** 血氧含量
+
+血氧含量是一个整型数字
+
+#### 运动数据
+
+|参数|类型|描述
+|---|---|---|
+|date|date|日期|
+|steps|int|步数|
+|rolls|int|翻滚次数|
+|battery|int|电量 0-100|
+
+```json
+{
+    "date": "2020-09-07",
+    "steps": 38,
+    "rolls": 123,
+    "battery": 47
+}
+```
