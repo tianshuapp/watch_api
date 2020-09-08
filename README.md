@@ -1177,27 +1177,27 @@ Response Body:
 
 **平台发出：**  
 
-|类型|值||描述
+|类型|值|描述
 |---|---|---|
-|UPLOAD|设置上传间隔|
-|CENTER|服务中心号码设置|
-|CALL|拨打电话|
-|MONITOR|监听|
-|SOS|设置紧急联系人|
-|FACTORY|恢复出厂设置|
-|SOSSMS|sos短信开关|
-|LOWBAT|低电压报警开关|
-|VERNO|版本查询|
-|CR|定位指令|
-|POWEROFF|关机指令|
-|REMOVE|取下手环报警开关|
-|PEDO|计步功能开关|
-|SILENCETIME|免打扰设置|
-|SILENCETIME2|免打扰设置2|
-|SLEEPTIME|翻身检测时间设置|
-|FIND|响铃|
-|REMIND|闹钟设置|
-|TK|语音消息|
+|UPLOAD|秒数|设置上传间隔|
+|CENTER|电话号|服务中心号码设置|
+|CALL|电话号|拨打电话|
+|MONITOR|无|监听，静默拨打服务中心号码|
+|SOS|电话号1,电话号2|设置紧急联系人|
+|FACTORY|无|恢复出厂设置|
+|SOSSMS|0或1|sos短信开关|
+|LOWBAT|0或1|低电压报警开关|
+|VERNO|无|版本查询|
+|CR|无|定位指令|
+|POWEROFF|无|关机指令|
+|REMOVE|0或1|取下手环报警开关|
+|PEDO|0或1|计步功能开关|
+|SILENCETIME|7:30-21:10,7:30-21:10,7:30-21:10|免打扰设置|
+|SILENCETIME2|-|免打扰设置2|
+|SLEEPTIME|23:30-7:30|翻身检测时间设置，此时间段内开启翻身检测|
+|FIND|无|响铃|
+|REMIND|-|闹钟设置|
+|TK|AMR数据，需要base64编码|语音消息|
 
 
 ### 19.一般结构
