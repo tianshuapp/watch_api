@@ -20,11 +20,11 @@ iot平台端API
 - [x] [15.群发消息到设备](#15群发消息到设备)  
 
 商户API  
-- [x] [16.webhook设置](16webhook设置)  
-- [ ] [17.消息通知](17消息通知) 
+- [x] [16.webhook设置](#16webhook设置)  
+- [ ] [17.消息通知](#17消息通知) 
 
 其他  
-- [x] [18.消息类型](18消息类型) 
+- [x] [18.消息类型](#18消息类型) 
 
 
 
@@ -290,7 +290,7 @@ GET
 
 ### 2.获取单设备轨迹
 
-> /api/trail/[deviceid] 
+> /api/location/{deviceid} 
 
 方法：GET
 
@@ -302,7 +302,7 @@ GET
 
 GET 
 
->/api/device/trail/123?duration=2
+>/api/device/location/123?duration=2
 
 返回：
 ```json
