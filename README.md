@@ -97,178 +97,150 @@ GET
 返回：
 ```json
 {
-    "data": {
-        "list": [
-            {
-                "deviceId": "860315001121004",
-                "uid": 12346,
-                "groupId": null,
-                "phone": "13630753377",
-                "center": "10086",
-                "sos1": "10086",
-                "sos2": "18642041559",
-                "createdAt": "2020-09-05 17:25:55",
-                "updatedAt": "2020-09-05 17:31:12",
-                "locations": []
-            },
-            {
-                "deviceId": "860315001121053",
-                "uid": 12345,
-                "groupId": null,
-                "phone": "17247725487",
-                "center": "10086",
-                "sos1": "18642041559",
-                "sos2": "10086",
-                "createdAt": "2020-09-05 15:42:37",
-                "updatedAt": "2020-09-05 15:42:37",
-                "locations": [
-                    {
-                        "time": "2020-09-07 05:46:40",
-                        "latitude": 0,
-                        "longitude": 0,
-                        "altitude": 100,
-                        "angle": 0,
-                        "speed": 0,
-                        "stars": 0,
-                        "gsm": 26,
-                        "battery": 30,
-                        "steps": 440,
-                        "rolls": 0,
-                        "status": "00000000",
-                        "sites": [
-                            "1",
-                            "460",
-                            "0",
-                            "17237",
-                            "1093",
-                            "-61"
-                        ],
-                        "wifis": [
-                            [
-                                "44:f9:71:3d:bd:cc",
-                                "-88"
-                            ]
-                        ]
-                    },
-                    {
-                        "time": "2020-09-07 05:39:40",
-                        "latitude": 41.705539,
-                        "longitude": 125.914325,
-                        "altitude": 100,
-                        "angle": 58.1,
-                        "speed": 1.62,
-                        "stars": 7,
-                        "gsm": 55,
-                        "battery": 30,
-                        "steps": 338,
-                        "rolls": 0,
-                        "status": "00000000",
-                        "sites": [
-                            "1",
-                            "460",
-                            "0",
-                            "17237",
-                            "1093",
-                            "-3"
-                        ],
-                        "wifis": [
-                            [
-                                "00:27:1d:fd:02:7c",
-                                "-95"
-                            ]
-                        ]
-                    },
-                    {
-                        "time": "2020-09-07 05:39:11",
-                        "latitude": 41.704326,
-                        "longitude": 125.908823,
-                        "altitude": 100,
-                        "angle": 117.4,
-                        "speed": 0.98,
-                        "stars": 10,
-                        "gsm": 58,
-                        "battery": 30,
-                        "steps": 338,
-                        "rolls": 0,
-                        "status": "00000000",
-                        "sites": [
-                            "1",
-                            "460",
-                            "0",
-                            "17237",
-                            "1093",
-                            "3"
-                        ],
-                        "wifis": [
-                            [
-                                "d8:d8:66:aa:45:cc",
-                                "-96"
-                            ]
-                        ]
-                    },
-                    {
-                        "time": "2020-09-07 05:32:04",
-                        "latitude": 0,
-                        "longitude": 0,
-                        "altitude": 100,
-                        "angle": 0,
-                        "speed": 0,
-                        "stars": 0,
-                        "gsm": 33,
-                        "battery": 30,
-                        "steps": 157,
-                        "rolls": 0,
-                        "status": "00000000",
-                        "sites": [
-                            "1",
-                            "460",
-                            "0",
-                            "17237",
-                            "1093",
-                            "-47"
-                        ],
-                        "wifis": []
-                    },
-                    {
-                        "time": "2020-09-07 05:27:18",
-                        "latitude": 0,
-                        "longitude": 0,
-                        "altitude": 100,
-                        "angle": 0,
-                        "speed": 0,
-                        "stars": 0,
-                        "gsm": 40,
-                        "battery": 30,
-                        "steps": 0,
-                        "rolls": 0,
-                        "status": "00000000",
-                        "sites": [
-                            "1",
-                            "460",
-                            "0",
-                            "17237",
-                            "1093",
-                            "-33"
-                        ],
-                        "wifis": [
-                            [
-                                "44:f9:71:3d:bd:cc",
-                                "-88"
-                            ]
-                        ]
-                    }
-                ]
-            }
-        ],
-        "meta": {
-            "currentPage": 1,
-            "lastPage": 1,
-            "total": 2,
-            "length": 10
-        }
-    },
     "message": "Success",
-    "code": 0
+    "code": 0,
+    "results": [
+        {
+            "deviceId": "860315001121004",
+            "uid": 1234,
+            "groupId": 12,
+            "company": "IC",
+            "phone": "13630753377",
+            "center": "18642041559",
+            "sos1": "18642041559",
+            "sos2": null,
+            "createdAt": "2020-09-08 02:41:05",
+            "updatedAt": "2020-09-09 10:24:40",
+            "status": 1,
+            "locations": [
+                {
+                    "time": "2020-09-09 09:31:03",
+                    "latitude": 0,
+                    "longitude": 0,
+                    "altitude": 100,
+                    "angle": 0,
+                    "speed": 0,
+                    "stars": 0,
+                    "gsm": 41,
+                    "battery": 5,
+                    "steps": 0,
+                    "rolls": 0,
+                    "status": "00000000",
+                    "sites": [
+                        "1",
+                        "460",
+                        "0",
+                        "17237",
+                        "38621",
+                        "-31"
+                    ],
+                    "wifis": [
+                        [
+                            "44:f9:71:3d:bd:cc",
+                            "-81"
+                        ]
+                    ]
+                },
+                {
+                    "time": "2020-09-09 09:30:20",
+                    "latitude": 0,
+                    "longitude": 0,
+                    "altitude": 100,
+                    "angle": 0,
+                    "speed": 0,
+                    "stars": 0,
+                    "gsm": 42,
+                    "battery": 1,
+                    "steps": 0,
+                    "rolls": 0,
+                    "status": "00000000",
+                    "sites": [
+                        "1",
+                        "460",
+                        "0",
+                        "17237",
+                        "38621",
+                        "-29"
+                    ],
+                    "wifis": [
+                        [
+                            "44:f9:71:3d:bd:cc",
+                            "-79"
+                        ],
+                        [
+                            "60:ee:5c:f3:44:78",
+                            "-95"
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "deviceId": "860315001121053",
+            "uid": null,
+            "groupId": null,
+            "company": "IC",
+            "phone": "17247725487",
+            "center": "18642041559",
+            "sos1": "18642041559",
+            "sos2": null,
+            "createdAt": "2020-09-08 02:38:33",
+            "updatedAt": "2020-09-08 02:38:33",
+            "status": 1,
+            "locations": [
+                {
+                    "time": "2020-09-09 09:06:41",
+                    "latitude": 41.734551,
+                    "longitude": 125.956236,
+                    "altitude": 100,
+                    "angle": 0,
+                    "speed": 0.18,
+                    "stars": 6,
+                    "gsm": 34,
+                    "battery": 30,
+                    "steps": 409,
+                    "rolls": 0,
+                    "status": "00000000",
+                    "sites": [
+                        "1",
+                        "460",
+                        "0",
+                        "17235",
+                        "1603",
+                        "-45"
+                    ],
+                    "wifis": []
+                },
+                {
+                    "time": "2020-09-09 09:04:43",
+                    "latitude": 41.740168,
+                    "longitude": 125.966549,
+                    "altitude": 100,
+                    "angle": 0,
+                    "speed": 0.34,
+                    "stars": 8,
+                    "gsm": 21,
+                    "battery": 35,
+                    "steps": 409,
+                    "rolls": 0,
+                    "status": "00000000",
+                    "sites": [
+                        "1",
+                        "460",
+                        "0",
+                        "17235",
+                        "8293",
+                        "-71"
+                    ],
+                    "wifis": []
+                }
+            ]
+        }
+    ],
+    "currentPage": 1,
+    "lastPage": 1,
+    "total": 2,
+    "length": 2
 }
 ```
 
@@ -279,7 +251,7 @@ GET
 
 方法：GET
 
-> /api/location/{deviceid} 
+> /api/device/location/{deviceid} 
 
 |参数|类型|必选|描述
 |---|---|---|---|
@@ -292,74 +264,74 @@ GET
 返回：
 ```json
 {
-	"data": {
-		"deviceId": "822126358522298",
-		"uid": 2890442907,
-		"groupId": 1,
-		"company": "IC",
-		"phone": "292974385",
-		"center": "966942562",
-		"sos1": "165057861",
-		"sos2": "114970753",
-		"createdAt": "2020-09-07 09:50:20",
-		"updatedAt": "2020-09-07 09:50:20",
-		"status": 1,
-		"locations": [
-			{
-				"time": "2020-09-07 05:39:11",
-				"latitude": 41.704326,
-				"longitude": 125.908823,
-				"altitude": 100,
-				"angle": 117.4,
-				"speed": 0.98,
-				"stars": 10,
-				"gsm": 58,
-				"battery": 30,
-				"steps": 338,
-				"rolls": 0,
-				"status": "00000000",
-				"sites": [
-					"1",
-					"460",
-					"0",
-					"17237",
-					"1093",
-					"3"
-				],
-				"wifis": [
-					[
-						"d8:d8:66:aa:45:cc",
-						"-96"
-					]
-				]
-			},
-			{
-				"time": "2020-09-07 05:32:04",
-				"latitude": 0,
-				"longitude": 0,
-				"altitude": 100,
-				"angle": 0,
-				"speed": 0,
-				"stars": 0,
-				"gsm": 33,
-				"battery": 30,
-				"steps": 157,
-				"rolls": 0,
-				"status": "00000000",
-				"sites": [
-					"1",
-					"460",
-					"0",
-					"17237",
-					"1093",
-					"-47"
-				],
-				"wifis": []
-			}
-		]
-	},
-	"message": "Success",
-	"code": 0
+    "result": {
+        "deviceId": "860315001121004",
+        "uid": 1234,
+        "groupId": 12,
+        "company": "IC",
+        "phone": "13630753377",
+        "center": "18642041559",
+        "sos1": "18642041559",
+        "sos2": null,
+        "createdAt": "2020-09-08 02:41:05",
+        "updatedAt": "2020-09-09 10:24:40",
+        "status": 1,
+        "locations": [
+            {
+                "time": "2020-09-09 13:04:55",
+                "latitude": 0,
+                "longitude": 0,
+                "altitude": 100,
+                "angle": 0,
+                "speed": 0,
+                "stars": 0,
+                "gsm": 38,
+                "battery": 15,
+                "steps": 0,
+                "rolls": 0,
+                "status": "00000000",
+                "sites": [
+                    "1",
+                    "460",
+                    "0",
+                    "17237",
+                    "1093",
+                    "-37"
+                ],
+                "wifis": [
+                    [
+                        "8c:a6:df:47:88:28",
+                        "-90"
+                    ]
+                ]
+            },
+            {
+                "time": "2020-09-09 12:55:01",
+                "latitude": 0,
+                "longitude": 0,
+                "altitude": 100,
+                "angle": 0,
+                "speed": 0,
+                "stars": 0,
+                "gsm": 40,
+                "battery": 15,
+                "steps": 0,
+                "rolls": 0,
+                "status": "00000000",
+                "sites": [
+                    "1",
+                    "460",
+                    "0",
+                    "17237",
+                    "1093",
+                    "-33"
+                ],
+                "wifis": []
+            }
+        ]
+    },
+    "message": "Success",
+    "code": 0
 }
 ```
 
@@ -393,71 +365,112 @@ GET
 返回：
 ```json
 {
-	"data": {
-		"list": [{
-			"deviceId": "822126358522298",
-			"company": "IC",
-			"uid": 2890442907,
-			"groupId": null,
-			"flag": "AL",
-			"from": 1,
-			"data": {
-				"time": "2020-09-07 05:46:40",
-				"latitude": 0,
-				"longitude": 0,
-				"altitude": 100,
-				"angle": 0,
-				"speed": 0,
-				"stars": 0,
-				"gsm": 26,
-				"battery": 30,
-				"steps": 440,
-				"rolls": 0,
-				"status": "00000000",
-				"sites": ["1", "460", "0", "17237", "1093", "-61"],
-				"wifis": [
-					["44:f9:71:3d:bd:cc", "-88"]
-				]
-			},
-			"createdAt": "2020-09-07 09:50:44",
-			"updatedAt": "2020-09-07 09:50:44"
-		}, {
-			"deviceId": "822126358522298",
-			"company": "IC",
-			"uid": 2890442907,
-			"groupId": null,
-			"flag": "AL",
-			"from": 1,
-			"data": {
-				"time": "2020-09-07 05:39:40",
-				"latitude": 41.705539,
-				"longitude": 125.914325,
-				"altitude": 100,
-				"angle": 58.1,
-				"speed": 1.62,
-				"stars": 7,
-				"gsm": 55,
-				"battery": 30,
-				"steps": 338,
-				"rolls": 0,
-				"status": "00000000",
-				"sites": ["1", "460", "0", "17237", "1093", "-3"],
-				"wifis": [
-					["00:27:1d:fd:02:7c", "-95"]
-				]
-			},
-			"createdAt": "2020-09-07 09:50:43",
-			"updatedAt": "2020-09-07 09:50:43"
-		}],
-		"meta": {
-			"currentPage": 1,
-			"lastPage": 346,
-			"total": 692,
-			"length": 2
-		}
-	},
-	"message": "Success",
-	"code": 0
+    "message": "Success",
+    "code": 0,
+    "results": [
+        {
+            "id": 18968,
+            "deviceId": "860315001121053",
+            "company": "IC",
+            "uid": 0,
+            "groupId": null,
+            "flag": "AL",
+            "from": 0,
+            "data": {
+                "time": "2020-09-09 12:16:31",
+                "latitude": 0,
+                "longitude": 0,
+                "altitude": 100,
+                "angle": 0,
+                "speed": 0,
+                "stars": 0,
+                "gsm": 51,
+                "battery": 100,
+                "steps": 834,
+                "rolls": 0,
+                "status": "00010000",
+                "sites": [
+                    "1",
+                    "460",
+                    "0",
+                    "17237",
+                    "1093",
+                    "-11"
+                ],
+                "wifis": [
+                    [
+                        "44:f9:71:3d:bd:cc",
+                        "-86"
+                    ],
+                    [
+                        "8c:a6:df:47:88:28",
+                        "-93"
+                    ]
+                ]
+            },
+            "createdAt": "2020-09-09 12:16:32",
+            "updatedAt": "2020-09-09 12:16:32"
+        },
+        {
+            "id": 18027,
+            "deviceId": "860315001121004",
+            "company": "IC",
+            "uid": 1234,
+            "groupId": null,
+            "flag": "AL",
+            "from": 0,
+            "data": {
+                "time": "2020-09-09 07:01:24",
+                "latitude": 0,
+                "longitude": 0,
+                "altitude": 100,
+                "angle": 0,
+                "speed": 0,
+                "stars": 0,
+                "gsm": 50,
+                "battery": 1,
+                "steps": 0,
+                "rolls": 0,
+                "status": "00020001",
+                "sites": [
+                    "1",
+                    "460",
+                    "0",
+                    "17235",
+                    "32143",
+                    "-13"
+                ],
+                "wifis": [
+                    [
+                        "14:75:90:a1:b6:72",
+                        "-77"
+                    ],
+                    [
+                        "06:75:90:a1:b6:72",
+                        "-78"
+                    ],
+                    [
+                        "14:75:90:a1:b7:65",
+                        "-92"
+                    ],
+                    [
+                        "14:75:90:a1:b7:2c",
+                        "-95"
+                    ],
+                    [
+                        "06:75:90:a1:b5:95",
+                        "-95"
+                    ]
+                ]
+            },
+            "createdAt": "2020-09-09 07:01:26",
+            "updatedAt": "2020-09-09 07:01:26"
+        }
+    ],
+    "currentPage": 1,
+    "lastPage": 33,
+    "total": 66,
+    "length": 2
 }
 ```
 
@@ -501,7 +514,7 @@ Request Body:
 Response Body:
 ```json
 {
-    "data": "87678asdf65",
+    "result": "8767865",
     "message": "Success",
     "code": 0
 }
@@ -566,13 +579,12 @@ Request Body:
 Response Body:
 ```json
 {
-    "data": {
+    "result": {
         "success": [
-            "8767868"
+            "1238767867",
+            "3428767868"
         ],
-        "failed": {
-            "8767867": "设备已经添加过，无法再次添加"
-        }
+        "failed": []
     },
     "message": "Success",
     "code": 0
@@ -620,18 +632,18 @@ Request Body:
 Response Body:
 ```json
 {
-    "data": {
+    "result": {
         "deviceId": "1238767867",
         "uid": "12345",
-        "groupId": "111",
+        "groupId": null,
         "company": "IC",
-        "phone": "13101000012",
+        "phone": "13101200000",
         "center": "13000000000",
         "sos1": "13000000001",
         "sos2": "13000000002",
         "status": 1,
-        "createdAt": "2020-09-07 14:52:03",
-        "updatedAt": "2020-09-07 15:17:14"
+        "createdAt": "2020-09-09 13:56:40",
+        "updatedAt": "2020-09-09 13:58:22"
     },
     "message": "Success",
     "code": 0
@@ -688,7 +700,7 @@ Request Body:
 Response Body:
 ```json
 {
-    "data": {
+    "result": {
         "success": [
             "8767868"
         ],
@@ -730,44 +742,40 @@ GET
 返回：
 ```json
 {
-    "data": {
-        "list": [
-            {
-                "deviceId": "3428767868",
-                "uid": 12346,
-                "groupId": null,
-                "company": "IC",
-                "phone": "13800000000",
-                "center": "13000000000",
-                "sos1": "13000000001",
-                "sos2": "13000000002",
-                "status": 1,
-                "createdAt": "2020-09-07 14:52:05",
-                "updatedAt": "2020-09-07 15:34:21"
-            },
-            {
-                "deviceId": "1238767867",
-                "uid": 12345,
-                "groupId": null,
-                "company": "IC",
-                "phone": "18100000000",
-                "center": "13000000000",
-                "sos1": "13000000001",
-                "sos2": "13000000002",
-                "status": 1,
-                "createdAt": "2020-09-07 14:52:03",
-                "updatedAt": "2020-09-07 15:34:22"
-            }
-        ],
-        "meta": {
-            "currentPage": 1,
-            "lastPage": 33,
-            "total": 66,
-            "length": 10
-        }
-    },
     "message": "Success",
-    "code": 0
+    "code": 0,
+    "results": [
+        {
+            "deviceId": "3428767868",
+            "uid": 12345,
+            "groupId": null,
+            "company": "IC",
+            "phone": "13100100000",
+            "center": "13000000000",
+            "sos1": "13000000001",
+            "sos2": "13000000002",
+            "status": 1,
+            "createdAt": "2020-09-09 13:56:40",
+            "updatedAt": "2020-09-09 13:56:40"
+        },
+        {
+            "deviceId": "1238767867",
+            "uid": 12345,
+            "groupId": null,
+            "company": "IC",
+            "phone": "13101200000",
+            "center": "13000000000",
+            "sos1": "13000000001",
+            "sos2": "13000000002",
+            "status": 1,
+            "createdAt": "2020-09-09 13:56:40",
+            "updatedAt": "2020-09-09 13:58:22"
+        }
+    ],
+    "currentPage": 1,
+    "lastPage": 3,
+    "total": 5,
+    "length": 2
 }
 ```
 
@@ -788,18 +796,18 @@ GET
 返回：
 ```json
 {
-    "data": {
-        "deviceId": "1238767867",
+    "result": {
+        "deviceId": "3428767868",
         "uid": 12345,
         "groupId": null,
         "company": "IC",
-        "phone": "18100000000",
+        "phone": "13100100000",
         "center": "13000000000",
         "sos1": "13000000001",
         "sos2": "13000000002",
         "status": 1,
-        "createdAt": "2020-09-07 14:52:03",
-        "updatedAt": "2020-09-07 15:34:22"
+        "createdAt": "2020-09-09 13:56:40",
+        "updatedAt": "2020-09-09 13:56:40"
     },
     "message": "Success",
     "code": 0
@@ -818,7 +826,7 @@ GET
 |参数|类型|必选|描述
 |---|---|---|---|
 |length|int|否|每页数据数量，默认100|
-|page|int|否|页码，针对设备，默认1|
+|page|int|否|页码，默认1|
 |duration|int|否|多少时间以内的健康数据，默认5，单位：小时|
 
 **示例:**
@@ -830,29 +838,25 @@ GET
 返回：
 ```json
 {
-    "data": {
-        "list": [
-            {
-                "blood": [
-                    111,
-                    75
-                ],
-                "createdAt": "2020-09-07 09:48:38"
-            },
-            {
-                "heart": 116,
-                "createdAt": "2020-09-07 09:48:38"
-            }
-        ],
-        "meta": {
-            "currentPage": 1,
-            "lastPage": 26,
-            "total": 51,
-            "length": 2
-        }
-    },
     "message": "Success",
-    "code": 0
+    "code": 0,
+    "results": [
+        {
+            "heart": 75,
+            "createdAt": "2020-09-09 13:18:12"
+        },
+        {
+            "blood": [
+                143,
+                81
+            ],
+            "createdAt": "2020-09-09 13:18:12"
+        }
+    ],
+    "currentPage": 1,
+    "lastPage": 9,
+    "total": 18,
+    "length": 2
 }
 ```
 
@@ -867,6 +871,7 @@ GET
 
 |参数|类型|必选|描述
 |---|---|---|---|
+|length|int|否|每页数据数量，默认100|
 |page|int|否|页码，针对设备，默认1|
 |duration|int|否|多少时间以内的健康数据，默认5，单位：小时|
 
@@ -880,30 +885,26 @@ GET
 返回：
 ```json
 {
-    "data": {
-        "list": [
-            {
-                "date": "2020-09-07",
-                "steps": 38,
-                "rolls": 123,
-                "battery": 47
-            },
-            {
-                "date": "2020-09-07",
-                "steps": 38,
-                "rolls": 123,
-                "battery": 47
-            }
-        ],
-        "meta": {
-            "currentPage": 2,
-            "lastPage": 6,
-            "total": 12,
-            "length": 2
-        }
-    },
     "message": "Success",
-    "code": 0
+    "code": 0,
+    "results": [
+        {
+            "date": "2020-09-09",
+            "steps": 834,
+            "rolls": 0,
+            "battery": 95
+        },
+        {
+            "date": "2020-09-09",
+            "steps": 834,
+            "rolls": 0,
+            "battery": 95
+        }
+    ],
+    "currentPage": 1,
+    "lastPage": 30,
+    "total": 60,
+    "length": 2
 }
 ```
 
@@ -927,7 +928,7 @@ GET
 Response Body:
 ```json
 {
-    "data": "1234",
+    "result": "8767865",
     "message": "Success",
     "code": 0
 }
@@ -957,7 +958,7 @@ Response Body:
 
 PUT
 
->/api/device/devices?deviceIds=8767867,8767868
+>/api/device/devices/delete?deviceIds=8767867,8767868
 
 Request Body:
 ```json
@@ -969,12 +970,12 @@ Request Body:
 Response Body:
 ```json
 {
-    "data": {
+    "results": {
         "success": [
             "8767868"
         ],
         "failed": {
-            "8767867": "有SOS消息，不可删除"
+            "8767867": "xxx"
         }
     },
     "message": "Success",
@@ -995,8 +996,8 @@ Response Body:
 |---|---|---|---|
 |deviceId|string|是|设备的IMEI或MEID，通常是设备上黏贴的条形码或二维码的值|
 |flag|string|是|消息类型，详情请看：[消息类型](#18消息类型)|
-|data|string|否|消息内容，可能是base64字符串，通过下方字段判断|
-|encoded|bool|否|data字段是否是base64字符串，false：不是 true：是，默认：false|
+|data|string|否|消息内容，可能是base64字符串，通过下方encoded字段判断，内容是否需要编码，请查看：[消息类型](#18消息类型)|
+|encoded|bool|否|data字段是否是base64字符串，false：不是, true：是，默认：false|
 
 **示例:**
 
@@ -1017,7 +1018,7 @@ Request Body:
 Response Body:
 ```json
 {
-    "data": 765371,
+    "result": 765371,
     "message": "Success",
     "code": 0
 }
@@ -1035,10 +1036,10 @@ Response Body:
 |参数|类型|必选|描述
 |---|---|---|---|
 |deviceIds|string[]|是|ID列表，设备的IMEI或MEID，通常是设备上黏贴的条形码或二维码的值|
-|flag|string|是|消息类型，详情请看：|
+|flag|string|是|消息类型，详情请看：[消息类型](#18消息类型)|
 |groupId|int|否|分组|
-|data|string|否|消息内容，可能是base64字符串，通过下方字段判断|
-|encoded|bool|否|data字段是否是base64字符串，false：不是 true：是，默认：false|
+|data|string|否|消息内容，可能是base64字符串，通过下方encoded字段判断，内容是否需要编码，请查看：[消息类型](#18消息类型)|
+|encoded|bool|否|data字段是否是base64字符串，false：不是, true：是，默认：false|
 
 
 返回参数：
@@ -1071,7 +1072,7 @@ Request Body:
 Response Body:
 ```json
 {
-    "data": {
+    "result": {
         "success": [
             "860315001121054"
         ],
@@ -1171,6 +1172,7 @@ Response Body:
 |KA|运动数据（步数、翻滚次数、电量）|
 |UD|位置，设备按一定时间间隔自动上报的位置|
 |UD2|补传的自动位置|
+|CRUD|位置，响应CR命令发出的消息|
 |AL|SOS上报|
 |Time|获取时间|
 |WT|获取天气|
@@ -1193,7 +1195,8 @@ Response Body:
 |SOSSMS|0或1|sos短信开关|
 |LOWBAT|0或1|低电压报警开关|
 |VERNO|无|版本查询|
-|CR|无|定位指令|
+|CR|无|立即定位指令，返回的是CRUD|
+|TK|AMR数据|需要把AMR音频数据用base64编码|
 |POWEROFF|无|关机指令|
 |REMOVE|0或1|取下手环报警开关|
 |PEDO|0或1|计步功能开关|
