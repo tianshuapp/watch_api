@@ -88,7 +88,7 @@ GET
 |uid|int|否|商户自定义的UID，针对设备|
 |groupId|int|否|商户自定义的分组ID，针对设备|
 |deviceId|int|否|设备ID|
-|locationLength|int|否|每个设备获取多少个位置数据，默认5个|
+|duration|int|否|多少小时内的数据(从最新一条往前计时)，默认5小时|
 
 **示例:**
 
