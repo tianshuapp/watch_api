@@ -714,6 +714,7 @@ Response Body:
 |end|int|否|不等式尾端，start < limitBy < end|
 |length|int|否|每页数据数量，默认100|
 |uid|int|否|商户自定义的UID|
+|groupId|int|否|商户自定义的分组ID|
 |deviceId|int|否|设备ID|
 |page|int|否|页码，默认1|
 
