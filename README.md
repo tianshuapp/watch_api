@@ -595,9 +595,9 @@ Response Body:
 
 以设备ID为基准，操作对象为设备
 
-方法：PUT
+方法：POST
 
-> /api/device/device/{deviceId}
+> /api/device/device/update{deviceId}
 
 请求参数：
 
@@ -616,7 +616,7 @@ Response Body:
 
 **示例:** 
 
->/api/device/device/1234
+>/api/device/device/update/1234
 
 Request Body:
 ```json
@@ -652,9 +652,9 @@ Response Body:
 
 ### 7.批量更新设备
 
-方法：PUT
+方法：POST
 
-> /api/device/devices
+> /api/device/devices/update
 
 请求参数：
 
@@ -675,7 +675,7 @@ Response Body:
 
 **示例:**
 
->/api/device/devices
+>/api/device/devices/update
 
 Request Body:
 ```json
@@ -913,9 +913,9 @@ GET
 
 ### 12.删除单设备
 
-方法：DELETE
+方法：POST 
 
-> /api/device/device/{deviceId}
+> /api/device/device/delete/{deviceId}
 
 |参数|类型|必选|描述|
 |---|---|---|---|
@@ -923,7 +923,7 @@ GET
 
 **示例:**
 
->/api/device/device/1234
+>/api/device/device/delete/1234
 
 Response Body:
 ```json
@@ -937,7 +937,7 @@ Response Body:
 
 ### 13.批量删除设备
 
-方法：PUT
+方法：POST
 
 > /api/device/devices/delete
 
@@ -956,7 +956,7 @@ Response Body:
 
 **示例:**
 
-PUT
+POST
 
 >/api/device/devices/delete?deviceIds=8767867,8767868
 
