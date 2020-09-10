@@ -597,7 +597,7 @@ Response Body:
 
 方法：POST
 
-> /api/device/device/update{deviceId}
+> /api/device/device/update?deviceId={deviceId}
 
 请求参数：
 
@@ -616,7 +616,7 @@ Response Body:
 
 **示例:** 
 
->/api/device/device/update/1234
+>/api/device/device/update?deviceId=1234
 
 Request Body:
 ```json
@@ -915,7 +915,7 @@ GET
 
 方法：POST 
 
-> /api/device/device/delete/{deviceId}
+> /api/device/device/delete
 
 |参数|类型|必选|描述|
 |---|---|---|---|
@@ -923,7 +923,7 @@ GET
 
 **示例:**
 
->/api/device/device/delete/1234
+>/api/device/device/delete?deviceId=1234
 
 Response Body:
 ```json
@@ -958,7 +958,7 @@ Response Body:
 
 POST
 
->/api/device/devices/delete?deviceIds=8767867,8767868
+>/api/device/devices/delete
 
 Request Body:
 ```json
