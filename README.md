@@ -585,8 +585,14 @@ Response Body:
             "3428767868"
         ],
         "failed": [
-            "123456",
-            "876542"
+            {
+              "deviceId": "675658",
+              "message": "失败原因"
+            },
+            {
+              "deviceId": "675658",
+              "message": "失败原因"
+            }
         ]
     },
     "message": "Success",
@@ -703,7 +709,14 @@ Response Body:
             "8767868"
         ],
         "failed": [
-            "12345"
+            {
+              "deviceId": "675658",
+              "message": "失败原因"
+            },
+            {
+              "deviceId": "675658",
+              "message": "失败原因"
+            }
         ]
     },
     "message": "Success",
@@ -973,7 +986,14 @@ Response Body:
             "8767868"
         ],
         "failed": [
-            "123456"
+            {
+              "deviceId": "675658",
+              "message": "失败原因"
+            },
+            {
+              "deviceId": "675658",
+              "message": "失败原因"
+            }
         ]
     },
     "message": "Success",
@@ -1044,8 +1064,7 @@ Response Body:
 
 |参数|类型|描述
 |---|---|---|
-|success|string[]|删除成功的设备ID列表|
-|failed|object|删除失败的设备ID与相应的原因|
+|success|string[]|发送成功的设备ID列表|
 
 **示例:**
 
