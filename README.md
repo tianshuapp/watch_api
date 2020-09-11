@@ -584,7 +584,10 @@ Response Body:
             "1238767867",
             "3428767868"
         ],
-        "failed": []
+        "failed": [
+            "123456",
+            "876542"
+        ]
     },
     "message": "Success",
     "code": 0
@@ -667,11 +670,6 @@ Response Body:
 |sos1|string|否|求救电话1|
 |sos2|string|否|求救电话2|
 
-返回参数：
-
-|参数|类型|描述
-|---|---|---|
-|data|string|添加成功的设备ID|
 
 **示例:**
 
@@ -704,9 +702,9 @@ Response Body:
         "success": [
             "8767868"
         ],
-        "failed": {
-            "8767867": "设备ID已经存在，无法修改"
-        }
+        "failed": [
+            "12345"
+        ]
     },
     "message": "Success",
     "code": 0
@@ -952,7 +950,7 @@ Response Body:
 |参数|类型|描述
 |---|---|---|
 |success|string[]|删除成功的设备ID列表|
-|failed|object|删除失败的设备ID与相应的原因|
+|failed|string[]|删除失败的设备ID列表|
 
 **示例:**
 
@@ -974,9 +972,9 @@ Response Body:
         "success": [
             "8767868"
         ],
-        "failed": {
-            "8767867": "xxx"
-        }
+        "failed": [
+            "123456"
+        ]
     },
     "message": "Success",
     "code": 0
@@ -1075,10 +1073,7 @@ Response Body:
     "result": {
         "success": [
             "860315001121054"
-        ],
-        "failed": {
-            "860315001121055": "设备不存在"
-        }
+        ]
     },
     "message": "Success",
     "code": 0
