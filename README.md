@@ -251,15 +251,16 @@ GET
 
 方法：GET
 
-> /api/device/location/{deviceid} 
+> /api/device/location 
 
 |参数|类型|必选|描述
 |---|---|---|---|
+|deviceId|string|是|设备ID|
 |duration|int|否|多少时间以内的轨迹数据，默认5，单位：小时|
 
 **示例:**
 
->/api/device/location/123?duration=2
+>/api/device/location?deviceId=123&duration=2
 
 返回：
 ```json
