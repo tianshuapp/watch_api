@@ -92,7 +92,7 @@ GET
 
 **示例:**
 
->/api/device/locations?page=2&orderBy=updated_at&order=asc
+>/api/device/location?page=2&orderBy=updated_at&order=asc
 
 返回：
 ```json
